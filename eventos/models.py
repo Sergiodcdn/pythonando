@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 class Evento(models.Model):
@@ -21,3 +22,8 @@ class Evento(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class Certificado(models.Model):
+    certificado = models.ImageField(upload_to="certificados")
+    participante = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    evento = models.ForeignKey(Evento, on_delete=models.DO_NOTHING)
